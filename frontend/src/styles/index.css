@@ -7,6 +7,8 @@
     background-size: 100% 200%; /* Duplica a altura para dar espaço para o movimento vertical */
     animation: slide-background-vertical 10s linear infinite;
     background-repeat: no-repeat;
+
+    aaa
 }
 
 /* Animação de movimento vertical */
