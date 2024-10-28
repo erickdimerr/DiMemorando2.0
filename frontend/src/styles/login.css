@@ -1,0 +1,72 @@
+.containerLogin {
+    height: 100vh; /* Usa 'vh' para a altura da viewport */
+    margin: 0;
+    padding: 0;
+    font-family: Arial, sans-serif;
+    background: linear-gradient(#f7f2f0, #135e2c);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.login-box {
+    background-color: #cceed4;
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 350px;
+    text-align: center;
+    position: relative;
+    /* Necessário para posicionar a foto */
+}
+
+.login-box .profile-pic {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background-color: #ccc;
+    position: absolute;
+    top: -50px;
+    /* Ajusta a posição para ficar sobre a caixa */
+    left: 50%;
+    transform: translateX(-50%);
+    overflow: hidden;
+    border: 5px solid white;
+}
+
+.login-box .profile-pic img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.login-box h1 {
+    margin-top: 60px;
+    /* Espaço para a imagem circular */
+    margin-bottom: 20px;
+    color: #1b3610;
+}
+
+.login-box input[type="text"],
+.login-box input[type="password"] {
+    width: 100%;
+    padding: 10px;
+    margin: 10px 0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.login-box button {
+    width: 100%;
+    padding: 10px;
+    background-color: #135e2c;
+    color: #ffffff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+.login-box button:hover {
+    background-color: #0e4722;
+}

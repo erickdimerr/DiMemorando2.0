@@ -1,0 +1,125 @@
+.index-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+    background: linear-gradient(180deg, #135e2c, #f0f0f0, #135e2c);
+    background-size: 100% 200%; /* Duplica a altura para dar espaço para o movimento vertical */
+    animation: slide-background-vertical 10s linear infinite;
+    background-repeat: no-repeat;
+}
+
+/* Animação de movimento vertical */
+@keyframes slide-background-vertical {
+    0% {
+        background-position: 0 0%;
+    }
+    100% {
+        background-position: 0 100%;
+    }
+}
+
+.header {
+    width: 85%;
+    /* Largura do cabeçalho */
+    background-color: #ebe7e7;
+    /* Cor de fundo do cabeçalho */
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    /* Centraliza o texto no cabeçalho */
+    margin-top: 20px;
+    /* Espaço entre o topo e o cabeçalho */
+}
+
+.header h2 {
+    font-family: cursive;
+    font-size: 3rem;
+    font-weight: bold;
+    color: #1b3610;
+    text-shadow: 5px 2px 4px rgba(0, 0, 0, 0.3);
+    letter-spacing: 2px;
+    line-height: 1.2;
+    padding: 10px;
+    border-radius: 5px;
+    animation: fadeIn 2s ease-in-out;
+}
+
+.header h1 {
+    color: rgb(14, 48, 6);
+    font-size: 30px;
+}
+
+.index-inner-page {
+    background-color: #ffffff;
+    /* Cor de fundo da página interna */
+    padding: 40px;
+    border-radius: 10px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    width: 85%;
+    /* Largura da página interna */
+    max-width: 600px;
+    /* Largura máxima */
+    text-align: center;
+    margin-top: 20px;
+    /* Espaço entre o cabeçalho e o conteúdo principal */
+}
+
+.index-inner-page h2 {
+    color: #1b3610;
+    /* Cor do título do conteúdo principal */
+}
+
+.index-inner-page p {
+    color: #333;
+    /* Cor do texto do conteúdo principal */
+}
+
+.green-box {
+    background-color: #28a745;
+    /* Cor verde */
+    color: rgb(0, 0, 0);
+    /* Cor do texto */
+    padding: 20px;
+    /* Espaçamento interno */
+    border-radius: 50px;
+    /* Bordas arredondadas */
+    margin-top: 20px;
+    /* Espaço acima da caixa verde */
+    margin-left: 28%;
+    /* Margem à esquerda para afastar da borda */
+    margin-right: 10%;
+    /* Margem à direita para afastar da borda */
+    width: 40%;
+    /* Largura da caixa verde */
+}
+
+.button-container {
+    display: flex;
+    flex-wrap: wrap; /* Permite que os botões se movam para a linha seguinte se necessário */
+    justify-content: center; /* Centraliza os botões horizontalmente */
+    margin-top: 20px; /* Espaçamento acima dos botões */
+    padding: 30px;
+}
+
+.adquirir-button {
+    background-color: #135e2c; /* Cor de fundo verde */
+    color: white; /* Cor do texto */
+    border: none; /* Remove a borda padrão */
+    border-radius: 5px; /* Bordas arredondadas */
+    padding: 15px 20px; /* Espaçamento interno do botão */
+    margin: 10px; /* Espaçamento entre os botões */
+    cursor: pointer; /* Muda o cursor para indicar que é clicável */
+    flex: 1 0 30%; /* Faz com que cada botão ocupe 30% da largura do contêiner */
+    text-align: center; /* Centraliza o texto dentro do botão */
+    font-size: 16px; /* Tamanho da fonte */
+    transition: background-color 0.3s; /* Transição suave ao passar o mouse */
+    padding: 40px;
+    margin: 22px;
+    
+}
+
+.adquirir-button:hover {
+    background-color: #0e4722; /* Cor do botão ao passar o mouse */
+}
