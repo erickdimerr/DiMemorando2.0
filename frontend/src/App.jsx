@@ -1,19 +1,17 @@
-import { useState } from 'react'
-import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
-import './App.css';
-import Login from './pages/Login.jsx';
-import Index from './pages/index.jsx';
-
+import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Index from './pages/Index';
 
 function App() {
-
   return (
-    <>
-      <div>
-        <Index />
-      </div>
-    </>
-  )
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/index" element={<Index />} />
+      </Routes>
+    </Router>
+  );
 }
 
-export default App
+export default App;

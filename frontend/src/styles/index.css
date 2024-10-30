@@ -3,12 +3,10 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    background: linear-gradient(180deg, #135e2c, #f0f0f0, #135e2c);
+    background-color: #000000;
     background-size: 100% 200%; /* Duplica a altura para dar espaço para o movimento vertical */
-    animation: slide-background-vertical 10s linear infinite;
+    animation: slide-background-vertical 15s linear infinite;
     background-repeat: no-repeat;
-
-    aaa
 }
 
 /* Animação de movimento vertical */
@@ -24,7 +22,7 @@
 .header {
     width: 85%;
     /* Largura do cabeçalho */
-    background-color: #ebe7e7;
+    background-color: #d1cbcb;
     /* Cor de fundo do cabeçalho */
     padding: 20px;
     border-radius: 10px;
@@ -39,7 +37,7 @@
     font-family: cursive;
     font-size: 3rem;
     font-weight: bold;
-    color: #1b3610;
+    color: #000000;
     text-shadow: 5px 2px 4px rgba(0, 0, 0, 0.3);
     letter-spacing: 2px;
     line-height: 1.2;
@@ -49,7 +47,7 @@
 }
 
 .header h1 {
-    color: rgb(14, 48, 6);
+    color: rgb(255, 255, 255);
     font-size: 30px;
 }
 
@@ -69,7 +67,7 @@
 }
 
 .index-inner-page h2 {
-    color: #1b3610;
+    color: #408afa;
     /* Cor do título do conteúdo principal */
 }
 
@@ -79,9 +77,9 @@
 }
 
 .green-box {
-    background-color: #28a745;
+    background-color: #424242;
     /* Cor verde */
-    color: rgb(0, 0, 0);
+    color: rgb(255, 255, 255);
     /* Cor do texto */
     padding: 20px;
     /* Espaçamento interno */
@@ -106,7 +104,7 @@
 }
 
 .adquirir-button {
-    background-color: #135e2c; /* Cor de fundo verde */
+    background-color: #000000; /* Cor de fundo verde */
     color: white; /* Cor do texto */
     border: none; /* Remove a borda padrão */
     border-radius: 5px; /* Bordas arredondadas */
@@ -123,5 +121,5 @@
 }
 
 .adquirir-button:hover {
-    background-color: #0e4722; /* Cor do botão ao passar o mouse */
+    background-color: #7d8580; /* Cor do botão ao passar o mouse */
 }
