@@ -3,26 +3,16 @@
     flex-direction: column;
     align-items: center;
     height: 100vh;
-    background-color: #000000;
+    background-color: #1e3463;
     background-size: 100% 200%; /* Duplica a altura para dar espaço para o movimento vertical */
     animation: slide-background-vertical 15s linear infinite;
     background-repeat: no-repeat;
 }
 
-/* Animação de movimento vertical */
-@keyframes slide-background-vertical {
-    0% {
-        background-position: 0 0%;
-    }
-    100% {
-        background-position: 0 100%;
-    }
-}
-
 .header {
     width: 85%;
     /* Largura do cabeçalho */
-    background-color: #d1cbcb;
+    background-color: #ffffff;
     /* Cor de fundo do cabeçalho */
     padding: 20px;
     border-radius: 10px;
@@ -37,7 +27,7 @@
     font-family: cursive;
     font-size: 3rem;
     font-weight: bold;
-    color: #000000;
+    color: #1e3463;
     text-shadow: 5px 2px 4px rgba(0, 0, 0, 0.3);
     letter-spacing: 2px;
     line-height: 1.2;
@@ -77,7 +67,7 @@
 }
 
 .green-box {
-    background-color: #424242;
+    background-color: #1e3463;
     /* Cor verde */
     color: rgb(255, 255, 255);
     /* Cor do texto */
@@ -93,33 +83,43 @@
     /* Margem à direita para afastar da borda */
     width: 40%;
     /* Largura da caixa verde */
+    margin-bottom: 60px; /* Aumentando a margem inferior da green-box */
 }
 
 .button-container {
     display: flex;
-    flex-wrap: wrap; /* Permite que os botões se movam para a linha seguinte se necessário */
+    flex-direction: column; /* Alinha as linhas verticalmente */
     justify-content: center; /* Centraliza os botões horizontalmente */
     margin-top: 20px; /* Espaçamento acima dos botões */
-    padding: 30px;
 }
 
 .adquirir-button {
-    background-color: #000000; /* Cor de fundo verde */
+    background-color: #1e3463; /* Cor de fundo */
     color: white; /* Cor do texto */
     border: none; /* Remove a borda padrão */
     border-radius: 5px; /* Bordas arredondadas */
-    padding: 15px 20px; /* Espaçamento interno do botão */
+    padding: 25px 30px; /* Aumentando o tamanho do botão (25px de cima e baixo, 30px de lado) */
     margin: 10px; /* Espaçamento entre os botões */
     cursor: pointer; /* Muda o cursor para indicar que é clicável */
-    flex: 1 0 30%; /* Faz com que cada botão ocupe 30% da largura do contêiner */
+    flex: 1 0 30%; /* Cada botão ocupa 30% da largura do contêiner */
     text-align: center; /* Centraliza o texto dentro do botão */
-    font-size: 16px; /* Tamanho da fonte */
+    font-size: 18px; /* Aumentando o tamanho da fonte */
     transition: background-color 0.3s; /* Transição suave ao passar o mouse */
-    padding: 40px;
-    margin: 22px;
-    
+    padding: 30px;
+}
+
+.document-number {
+    font-size: 0.9em; /* Tamanho da fonte do texto adicional */
+    color: #ffffff; /* Cor do texto */
+    margin-top: 5px; /* Espaço entre o texto principal e o texto adicional */
 }
 
 .adquirir-button:hover {
     background-color: #7d8580; /* Cor do botão ao passar o mouse */
+}
+
+.button-row {
+    display: flex;
+    justify-content: center; /* Centraliza os botões na linha */
+    margin-bottom: 15px; /* Espaço entre as linhas de botões */
 }

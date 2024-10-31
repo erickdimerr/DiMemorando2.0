@@ -3,11 +3,10 @@ const cors = require('cors');
 const mysql = require('mysql2');
 
 const app = express();
-
-app.use(cors()); // Permite todas as origens
-
+app.use(cors({ origin: 'http://localhost:5173' }));
 app.use(express.json());
 
+// Conexão com o banco de dados
 const db = mysql.createConnection({
     host: 'localhost',
     user: 'root',
@@ -17,11 +16,31 @@ const db = mysql.createConnection({
 
 db.connect((err) => {
     if (err) {
-        console.error('Erro ao conectar ao banco de dados:', err.code); // Mostra o código de erro
-        console.error('Detalhes do erro:', err); // Mostra o erro completo
+        console.error('Erro ao conectar ao banco de dados:', err.code);
+        console.error('Detalhes do erro:', err);
         return;
     }
     console.log('Conectado ao banco de dados');
+});
+
+// Rota para obter o último documento
+app.get('/ultimo-documento', async (req, res) => {
+    try {
+        const query = 'SELECT documento_numero, documento_tipo, usuario_email FROM usuarios_documentos ORDER BY data_insercao DESC LIMIT 1';
+        db.query(query, (error, results) => {
+            if (error) {
+                console.error('Erro ao buscar o último documento:', error);
+                return res.status(500).json({ error: 'Erro ao buscar o documento' });
+            }
+            if (results.length > 0) {
+                res.json(results[0]);
+            } else {
+                res.status(404).json({ error: 'Nenhum documento encontrado' });
+            }
+        });
+    } catch (error) {
+        res.status(500).json({ error: 'Erro ao buscar o documento' });
+    }
 });
 
 // Inicie o servidor escutando em todas as interfaces de rede
@@ -147,27 +166,21 @@ app.get('/getdeclaracao', (req, res) => {
     });
 });
 
-app.post('/adquirirMemorando', (req, res) => {
-    let sql = 'UPDATE documentos SET memorando = memorando + 1';
+app.post('/adquirirMemorando', (req, res) => { 
+    // Incrementa o valor do memorando
+    let sql = 'UPDATE documentos SET memorando = memorando + 1'; 
     db.query(sql, (err, result) => {
         if (err) throw err;
+
+        // Verifica se a atualização foi bem-sucedida
         db.query('SELECT memorando FROM documentos', (err, results) => {
             if (err) throw err;
             if (results.length > 0) {
-                // Obtenha o nome e sobrenome do usuário
-                const query = 'SELECT nome, sobrenome FROM usuarios WHERE email = ?';
-                db.query(query, [req.body.email], (err, userResults) => {
-                    if (err) throw err;
-                    res.json({
-                        memorando: results[0].memorando,
-                        nome: userResults[0].nome,
-                        sobrenome: userResults[0].sobrenome,
-                        dataHora: new Date(),
-                        tipoDocumento: 'Memorando'
-                    });
-                });
+                // Retorna o valor atualizado do memorando
+                res.json({ memorando: results[0].memorando });
             } else {
-                db.query('INSERT INTO documentos (memorando) VALUES (1)', (err, result) => {
+                // Se não houver resultados, insere um novo registro
+                db.query('INSERT INTO documentos (memorando) VALUES (1)', (err, result) => { 
                     if (err) throw err;
                     res.json({ memorando: 1 });
                 });
@@ -175,6 +188,7 @@ app.post('/adquirirMemorando', (req, res) => {
         });
     });
 });
+
 
 app.post('/adquirirMemorandoCircular', (req, res) => {
     let sql = 'UPDATE documentos SET memorandoCircular = memorandoCircular + 1';
@@ -384,5 +398,9 @@ app.get('/usuarios', (req, res) => {
       res.json(results);
     });
 });
+
+app.use(cors({
+    origin: 'http://localhost:5173'
+  }));
 
 app.listen(3000, () => console.log('Servidor rodando na porta 3000'));

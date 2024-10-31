@@ -3,13 +3,13 @@
     margin: 0;
     padding: 0;
     font-family: Arial, sans-serif;
-    background: linear-gradient(#f7f2f0, #135e2c);
+    background: linear-gradient(#f7f2f0, #1e3463);
     display: flex;
     justify-content: center;
     align-items: center;
 }
 .login-box {
-    background-color: #cceed4;
+    background-color: #1e3463;
     padding: 40px;
     border-radius: 10px;
     box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
@@ -26,11 +26,12 @@
     background-color: #ccc;
     position: absolute;
     top: -50px;
+    background-image: url('./src/image/channels4_profile.jpg');
     /* Ajusta a posição para ficar sobre a caixa */
     left: 50%;
     transform: translateX(-50%);
     overflow: hidden;
-    border: 5px solid white;
+    border: 5px solid rgb(156, 156, 156);
 }
 
 .login-box .profile-pic img {
@@ -43,7 +44,7 @@
     margin-top: 60px;
     /* Espaço para a imagem circular */
     margin-bottom: 20px;
-    color: #1b3610;
+    color: #d1d1d1;
 }
 
 .login-box input[type="text"],
@@ -59,8 +60,8 @@
 .login-box button {
     width: 100%;
     padding: 10px;
-    background-color: #135e2c;
-    color: #ffffff;
+    background-color: #b2b6b4;
+    color: #000000;
     border: none;
     border-radius: 5px;
     cursor: pointer;
@@ -68,5 +69,5 @@
 }
 
 .login-box button:hover {
-    background-color: #0e4722;
+    background-color: #5c5c5c;
 }
