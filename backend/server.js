@@ -90,40 +90,6 @@ app.post('/login', (req, res) => {
     });
 });
 
-app.get('/ultimoNumero', (req, res) => {
-    const query = 'SELECT nome, ultimo_numero FROM usuarios ORDER BY ultimo_numero DESC LIMIT 1';
-
-    db.query(query, (err, results) => {
-        if (err) throw err;
-        if (results.length > 0) {
-            res.send(results[0]);
-        } else {
-            res.status(404).send('Nenhum usuário encontrado');
-        }
-    });
-});
-
-app.post('/usuarioInfo', (req, res) => {
-    const { email } = req.body;
-
-    const query = `SELECT nome, sobrenome, setor FROM usuarios WHERE email = ?`;
-
-    db.query(query, [email], (err, result) => {
-        if (err) {
-            console.error('Erro ao recuperar informações do usuário:', err);
-            res.status(500).json({ error: 'Erro ao recuperar informações do usuário' });
-            return;
-        }
-
-        if (result.length > 0) {
-            // Se encontrar o usuário, envie os dados como resposta
-            res.json(result[0]);
-        } else {
-            res.status(404).json({ error: 'Usuário não encontrado' });
-        }
-    });
-});
-
 app.get('/getMemorando', (req, res) => {
     db.query('SELECT memorando FROM documentos', (err, results) => {
         if (err) throw err;
@@ -280,97 +246,10 @@ app.post('/adquirirdeclaracao', (req, res) => {
     });
 });
 
-app.post('/diminuirMemorando', (req, res) => {
-    let sql = 'UPDATE documentos SET memorando = memorando - 1';
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        db.query('SELECT memorando FROM documentos', (err, results) => {
-            if (err) throw err;
-            res.json(results[0]);
-        });
-    });
-});
-
-app.post('/diminuirMemorandoCircular', (req, res) => {
-    let sql = 'UPDATE documentos SET memorandoCircular = memorandoCircular - 1';
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        db.query('SELECT memorandoCircular FROM documentos', (err, results) => {
-            if (err) throw err;
-            res.json(results[0]);
-        });
-    });
-});
-
-app.post('/diminuirOficio', (req, res) => {
-    let sql = 'UPDATE documentos SET oficio = oficio - 1';
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        db.query('SELECT oficio FROM documentos', (err, results) => {
-            if (err) throw err;
-            res.json(results[0]);
-        });
-    });
-});
-
-app.post('/diminuirOficioCircular', (req, res) => {
-    let sql = 'UPDATE documentos SET oficioCircular = oficioCircular - 1';
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        db.query('SELECT oficioCircular FROM documentos', (err, results) => {
-            if (err) throw err;
-            res.json(results[0]);
-        });
-    });
-});
-
-app.post('/diminuiratestado', (req, res) => {
-    let sql = 'UPDATE documentos SET atestado = atestado - 1';
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        db.query('SELECT atestado FROM documentos', (err, results) => {
-            if (err) throw err;
-            res.json(results[0]);
-        });
-    });
-});
-
-app.post('/diminuirdeclaracao', (req, res) => {
-    let sql = 'UPDATE documentos SET declaracao = declaracao - 1';
-    db.query(sql, (err, result) => {
-        if (err) throw err;
-        db.query('SELECT declaracao FROM documentos', (err, results) => {
-            if (err) throw err;
-            res.json(results[0]);
-        });
-    });
-});
-
 app.get('/getUsers', (req, res) => {
     db.query('SELECT * FROM usuarios', (err, results) => {
         if (err) throw err;
         res.json(results);
-    });
-});
-
-app.delete('/deleteUser/:email', (req, res) => {
-    console.log(req.params.email); // Verifique o email
-    db.query('DELETE FROM usuarios WHERE email = ?', [req.params.email], (err, result) => {
-        if (err) {
-            console.log(err); // Registre o erro
-            throw err;
-        }
-        console.log(result); // Verifique o resultado
-        res.json({ message: 'Usuário deletado com sucesso' });
-    });
-});
-
-app.post('/updateLastUser', (req, res) => {
-    const { email, buttonType } = req.body;
-    const query = 'UPDATE last_user_table SET email = ? WHERE button_type = ?';
-    db.query(query, [email, buttonType], (err, results) => {
-        if (err) throw err;
-        res.send('Último usuário atualizado com sucesso');
     });
 });
 
